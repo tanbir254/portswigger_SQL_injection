@@ -1,0 +1,37 @@
+Lab: SQL injection UNION attack, determining the number of columns returned by the query
+
+SQL injection - product category filter
+Goal: determine the number of columns that are being returned by the query.
+
+Analysis
+
+table1  table2
+a|b     c|d
+1,2     2,3
+3,4     4,5
+
+query1# select a,b from table1
+1,2
+3,4
+query2# select a,b from table1 union select c,d from table2
+1,2
+3,4
+2,3
+4,5
+
+Rule:
+- the number and order of columns must be same for all query
+- data type must be compatible
+
+SQL attack: 1st way
+- select ? from table1 union NULL
+- error, incorrect numer of column
+
+- select ? from table1 union NULL, NULL, NULL --
+- 200 response code, correct nunber of columns
+
+SQL attack: 2nd way
+- query1# select a,b from table1 order by 3 --
+
+
+
