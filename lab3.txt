@@ -33,5 +33,6 @@ SQL attack: 1st way
 SQL attack: 2nd way
 - query1# select a,b from table1 order by 3 --
 
-
+found the column number 
+solved
 
