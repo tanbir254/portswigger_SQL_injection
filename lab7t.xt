@@ -1,0 +1,11 @@
+Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+
+GOAL: display database version
+
+Analysis
+
+determine column number using burp
+'order by 1-- ok
+'order by 2-- ok
+'order by 3-- error
+
