@@ -1,0 +1,18 @@
+Lab: SQL injection UNION attack, finding a column containing text
+
+Analysis:
+' order by 1-- 
+return no error to find how many column
+
+to find data type: ' union select null,null,null--
+
+
+
+there is 2nd column containing string, select 2nd position the given string.
+
+Solved
+
+
+
+
+
